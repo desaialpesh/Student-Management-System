@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Student</title>
+</head>
+<body>
+<div class="card mr-3">
+    <div class="card-body">
+        <h1 class="text-center">View Student</h1>
+        <!-- View Contact Table -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Roll No</th>
+                <th scope="col">Department</th>
+                <th scope="col">Standard</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Age</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="s:${students}"><!--
+                &lt;!&ndash; When user click on Student Id we wanted to show different page &ndash;&gt;
+                <td><a href="" th:href="@{'/student/'+${s.getId()}}"> <span
+                        th:text="${'STUDENT_'+c..id}"></span>
+                </a></td>-->
+
+                <td th:text="${c.rollNo}"></td>
+                <td th:text="${c.department}"></td>
+
+
+                <td th:text="${c.standard}"></td>
+                <td th:text="${c.gender}"></td>
+                <td th:text="${c.age}"></td>
+                <td>
+                    <form class="mt-2" th:action="@{'/student/edit/'+${c.cId}}"
+                          method="GET">
+                        <button type="submit" class="btn btn-primary btn-sm btn-block">Update</button>
+                    </form></td>
+            </tr>
+
+
+            </tbody>
+        </table>
+</body>
+</html>
